@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < questionsCollection.length; i++) {
             const element = questionsCollection[i];
 
-            if (element.classList.contains('active') && (element != activeElem)) {
+            if (element.classList.contains('active') && !element.isEqualNode(activeElem)) {
                 element.classList.remove('active');
             }
         }
@@ -16,26 +16,25 @@ document.addEventListener('DOMContentLoaded', () => {
     questions.addEventListener('click', (event) => {
         const activeElement = event.target.closest('.question')
 
-        deactivateOtherActiveElements(activeElement)
+        if (activeElement) {
+            deactivateOtherActiveElements(activeElement)
 
-        if (event.target.classList.contains('question__content')) {
             activeElement.classList.toggle('active')
         }
     })
 
     titleELement.addEventListener('dblclick', (event) => {
-        const activeElement = event.target.closest('.question')
-
         let randomNumberOfQuestion = Math.floor(Math.random() * 3)
 
-        deactivateOtherActiveElements(activeElement)
+        deactivateOtherActiveElements()
 
         const randomQuestion = questionsCollection[randomNumberOfQuestion]
         randomQuestion.classList.toggle('active')
 
-        setTimeout(() => {
-            const activeElement = event.target.closest('.question')
-            deactivateOtherActiveElements(activeElement)
-        }, 2000)
+        const id = setTimeout(() => {
+            deactivateOtherActiveElements();
+
+            clearTimeout(id);
+        }, 2000);
     })
 })

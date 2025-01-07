@@ -31,7 +31,7 @@ body {
 
 .title {
     color: yellow;
-    font-size: 24px;
+    font-size: 31px;
     margin-bottom: 30px;
     transition: all 0.7s ease-in-out;
     cursor: pointer;
@@ -48,10 +48,11 @@ body {
     flex-direction: column;
     justify-content: space-around;
     cursor: pointer;
+    gap: 15px;
 }
 
 .question {
-    font-size: 18px;
+    font-size: 23px;
     display: flex;
     flex-direction: column;
     width: 95%;
@@ -64,7 +65,7 @@ body {
     margin-top: 5px;
     color: aquamarine;
     transition: all 0.5s ease-in-out;
-    font-size: 16px;
+    font-size: 20px;
     text-align: start;
 }
 
@@ -100,11 +101,6 @@ body {
 }
 
 @media (max-width: 510px) {
-    .container{
-        justify-content: normal;
-        padding-top: 80px;
-    }
-
     .questions-wrapper {
         width: 80%;
     }
@@ -115,6 +111,10 @@ body {
 
     .question {
         font-size: 16px;
+    }
+
+    .question.active .question__answer {
+        height: 50px;
     }
 
     .question .question__answer {
